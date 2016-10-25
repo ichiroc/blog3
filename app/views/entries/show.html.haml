@@ -1,0 +1,27 @@
+%article
+  %h1= @entry.title
+  %div= @entry.body
+  =link_to 'Edit', edit_blog_entry_path(@entry.blog, @entry)
+  =link_to 'Back', @entry.blog
+
+%div
+  %h2 Listing Comments
+  %table
+    %thead
+      %tr
+        %td Body
+        %td
+        %td
+    %tbody
+      - @entry.comments.each do |comment|
+        %tr
+          %td= comment.approved? ? comment.body : '(承認待ち)'
+          %td= link_to( 'Approve', approve_blog_entry_comment_path(@entry.blog, @entry, comment), method: :patch ) unless comment.approved?
+          %td= link_to( 'Destroy', [ @entry.blog, @entry, comment ], method: :delete, data: { confirm: 'Are you sure?'} )
+  %h3 New Comment
+  = form_for([ @entry.blog, @entry, Comment.new ]) do |f|
+    %p
+      = f.label :body
+      = f.text_area :body
+    %p
+      = f.submit 'Submit'

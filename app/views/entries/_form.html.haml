@@ -1,0 +1,10 @@
+-# # =form_for(entry, url: blog_entries_path(entry.blog, entry)) do |f|
+=form_for([entry.blog,entry]) do |f|
+  %p
+    = f.label :title
+    = f.text_field :title
+  %p
+    = f.label :body
+    = f.text_area :body
+  %p
+    = f.submit 'Submit'

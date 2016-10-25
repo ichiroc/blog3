@@ -1,0 +1,28 @@
+%div
+  %h1= @blog.title
+
+  = link_to 'Edit', edit_blog_path(@blog)
+  = link_to 'Back', blogs_path
+
+%div
+  %h2 Listing Entries
+  -if @blog.entries.present?
+    %table
+      %thead
+        %tr
+          %td Title
+          %td Body
+          %td
+          %td
+          %td
+      %tbody
+        - @blog.entries.order(created_at: :desc).each do |entry|
+          %tr
+            %td= entry.title
+            %td= entry.body.truncate(20, separator: /(。|\.| )/)
+            %td= link_to 'Show', [@blog, entry]
+            %td= link_to 'Edit', edit_blog_entry_path(@blog, entry)
+            %td= link_to 'Destroy', [@blog, entry], method: :delete, data: { confirm: 'Are you sure?' }
+  -else
+    %p まだ記事は有りません
+  =link_to 'New Entry', new_blog_entry_path(@blog)
