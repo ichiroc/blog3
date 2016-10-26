@@ -5,4 +5,7 @@ Blog: #{@blog.title}
 %br
 Entry: #{@entry.title}
 %br
-Comment: #{@comment.body}
+Comment: #{simple_format(@comment.body)}
+%br
+
+%p= link_to "#{@entry.title}を開く", [@blog, @entry]
