@@ -3,16 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe Blog do
-  before do
-    @blog = Blog.new()
+  subject { Blog.new(title: title).valid? }
+
+  context 'titleが有る場合' do
+    let(:title) { 'hoge' }
+    it { is_expected.to be_truthy }
   end
 
-  it 'titleがあれば有効な状態であること' do
-    @blog.title = 'hoge'
-    expect(@blog.valid?).to be_truthy
-  end
-
-  it 'titleがなければ無効な状態であること' do
-    expect(@blog.valid?).to_not be_truthy
+  context 'titleが無い場合' do
+    let(:title) { nil }
+    it { is_expected.to_not be_truthy }
   end
 end
