@@ -1,3 +1,4 @@
+# coding: utf-8
 # frozen_string_literal: true
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:approve, :destroy]
@@ -14,6 +15,8 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params.merge(entry_id: params[:entry_id]))
     if comment.save
+      # モデルの hook にせずに Web からの投稿の時のみ送信する
+      CommentMailer.request_approval(comment).deliver
       redirect_to [comment.entry.blog, comment.entry], notice: 'Successfully comment created'
     else
       redirect_to [comment.entry.blog, comment.entry], notice: 'Something went wrong!'

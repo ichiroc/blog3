@@ -1,0 +1,11 @@
+%p 新しいコメントが登録されました。
+%p 承認または削除して下さい。
+
+Blog: #{@blog.title}
+%br
+Entry: #{@entry.title}
+%br
+Comment: #{simple_format(@comment.body)}
+%br
+
+%p= link_to "#{@entry.title}を開く", [@blog, @entry]
