@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe BlogsController do
+
   fixtures(:all)
 
   describe 'GET #index' do
