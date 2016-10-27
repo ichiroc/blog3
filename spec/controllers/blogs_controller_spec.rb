@@ -15,7 +15,7 @@ RSpec.describe BlogsController do
 
     describe 'POST #create' do
       it "新規作成後に@blogのshowに遷移すること" do
-        post :create, { blog: { title: 'hoge' }}
+        post :create, params: { blog: { title: 'hoge' }}
         @blog = assigns(:blog)
         expect(response).to redirect_to blog_path(@blog)
       end
