@@ -55,7 +55,7 @@ RSpec.describe BlogsController do
     end
 
     it '削除後に index に移動すること' do
-      post :destroy, params:{ id: @blog }
+      post :destroy, params: { id: @blog }
       expect(response).to redirect_to blogs_path
     end
   end
