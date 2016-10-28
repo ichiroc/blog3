@@ -13,6 +13,15 @@ RSpec.describe BlogsController do
     end
   end
 
+  describe 'GET #show' do
+    it '@blog にブログが入っていること' do
+      blog = Blog.first
+      get :show, params: { id: blog }
+      @blog = assigns(:blog)
+      expect(@blog).to eq blog
+    end
+  end
+
   describe 'POST #create' do
     it '新規作成後に@blogのshowに遷移すること' do
       post :create, params: { blog: { title: 'hoge' } }
