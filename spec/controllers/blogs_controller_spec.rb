@@ -29,4 +29,10 @@ RSpec.describe BlogsController do
       expect(response).to redirect_to blog_path(@blog)
     end
   end
+  describe 'DELETE #destroy' do
+    it '削除すると消える事' do
+      blog = Blog.create(title: 'hoge')
+      expect { post :destroy, params: { id: blog } }.to change { Blog.count }.by(-1)
+    end
+  end
 end
