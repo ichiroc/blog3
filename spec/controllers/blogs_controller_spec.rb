@@ -29,6 +29,23 @@ RSpec.describe BlogsController do
       expect(response).to redirect_to blog_path(@blog)
     end
   end
+
+  describe 'PATCH #update' do
+    before do
+      @blog = Blog.create(title: 'fuga')
+      patch :update, params: { id: @blog.id, blog: { title: 'hoge' } }
+      @blog.reload
+    end
+
+    it '更新時に@blogの属性が変更されている事' do
+      expect(@blog.title).to eq 'hoge'
+    end
+
+    it '更新後に blog に遷移すること' do
+      expect(response).to redirect_to blog_path(@blog)
+    end
+  end
+
   describe 'DELETE #destroy' do
     it '削除すると消える事' do
       blog = Blog.create(title: 'hoge')
