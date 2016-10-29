@@ -37,7 +37,7 @@ RSpec.describe BlogsController do
       @blog.reload
     end
 
-    it '更新時に@blogの属性が変更されている事' do
+    it '更新時に@blogの属性が変更されていること' do
       expect(@blog.title).to eq 'hoge'
     end
 
@@ -50,7 +50,7 @@ RSpec.describe BlogsController do
     before do
       @blog = Blog.create(title: 'hoge')
     end
-    it '削除すると消える事' do
+    it '削除すると消えること' do
       expect { post :destroy, params: { id: @blog } }.to change { Blog.count }.by(-1)
     end
 
