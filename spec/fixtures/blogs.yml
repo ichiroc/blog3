@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 seto:
+  id: 1
   title: 瀬戸市のブログ
 
 nagoya:
+  id: 2
   title: 名古屋市のブログ
