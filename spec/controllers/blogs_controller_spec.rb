@@ -33,7 +33,7 @@ RSpec.describe BlogsController do
   describe 'PATCH #update' do
     before do
       @blog = Blog.create(title: 'fuga')
-      patch :update, params: { id: @blog.id, blog: { title: 'hoge' } }
+      patch :update, params: { id: @blog, blog: { title: 'hoge' } }
       @blog.reload
     end
 
