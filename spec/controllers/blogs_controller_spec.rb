@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe BlogsController do
-  fixtures(:all)
+  fixtures(:blogs)
 
   describe 'GET #index' do
     it '@blogsに全てのBlogが入っていること' do
