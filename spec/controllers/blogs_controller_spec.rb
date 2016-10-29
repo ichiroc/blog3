@@ -8,8 +8,8 @@ RSpec.describe BlogsController do
   describe 'GET #index' do
     it '@blogsに全てのBlogが入っていること' do
       get :index
-      @blogs = assigns(:blogs)
-      expect(@blogs.size).to be 2
+      @blogs = Blog.all
+      expect(assigns(:blogs)).to eq @blogs
     end
   end
 
