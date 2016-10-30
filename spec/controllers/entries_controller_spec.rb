@@ -41,16 +41,16 @@ RSpec.describe EntriesController do
   end
 
   describe 'POST #create' do
-    it "POST すると記事がの数が増えること" do
+    it 'POST すると記事がの数が増えること' do
       blog = Blog.first
-      entry_params = { title: 'hoge', body: 'fuga'}
-      expect{ post :create, params: { blog_id: blog, entry: entry_params} }.to change{ Entry.count }.by(+1)
+      entry_params = { title: 'hoge', body: 'fuga' }
+      expect { post :create, params: { blog_id: blog, entry: entry_params } }.to change { Entry.count }.by(+1)
     end
 
     it '作成後にその記事にリダイレクトされること' do
       blog = Blog.first
-      post :create, params: { blog_id: blog, entry: { title: 'hoge', body: 'fuga'} }
-      expect(response).to redirect_to( [blog, Entry.last])
+      post :create, params: { blog_id: blog, entry: { title: 'hoge', body: 'fuga' } }
+      expect(response).to redirect_to([blog, Entry.last])
     end
   end
 end
