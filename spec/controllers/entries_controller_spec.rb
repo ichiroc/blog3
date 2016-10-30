@@ -59,7 +59,7 @@ RSpec.describe EntriesController do
       blog = Blog.first
       @entry = blog.entries.first
       expect(@entry.title).to_not be 'hoge'
-      patch :update, params: {blog_id: 1, id: @entry, entry: {title: 'hoge', body: @entry.body}}
+      patch :update, params: { blog_id: 1, id: @entry, entry: { title: 'hoge', body: @entry.body } }
       @entry.reload
     end
 
@@ -68,7 +68,7 @@ RSpec.describe EntriesController do
     end
 
     it '更新された後にその Entry に移動すること' do
-      expect(response).to redirect_to([ @entry.blog, @entry ])
+      expect(response).to redirect_to([@entry.blog, @entry])
     end
   end
 end
