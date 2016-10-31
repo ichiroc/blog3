@@ -12,6 +12,7 @@ RSpec.describe Blog do
   scenario 'Blogの新規作成時にtitleを入力しなかった場合にエラーが表示されること' do
     click_button 'Submit'
     expect(page).to have_content "Title can't be blank"
+    expect(current_path).to eq blogs_path
   end
 
   scenario 'Blogの新規作成時にtitleを入力した場合はデータが保存され閲覧画面に遷移すること' do
