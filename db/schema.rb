@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161025111349) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161025111349) do
     t.integer  "entry_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.index ["entry_id"], name: "index_comments_on_entry_id"
+    t.index ["entry_id"], name: "index_comments_on_entry_id", using: :btree
   end
 
   create_table "entries", force: :cascade do |t|
@@ -33,13 +36,9 @@ ActiveRecord::Schema.define(version: 20161025111349) do
     t.integer  "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["blog_id"], name: "index_entries_on_blog_id"
+    t.index ["blog_id"], name: "index_entries_on_blog_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "comments", "entries"
+  add_foreign_key "entries", "blogs"
 end
