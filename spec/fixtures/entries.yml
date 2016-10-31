@@ -1,0 +1,23 @@
+first:
+  id: 1
+  title: 最初の記事です
+  body: はじめまして
+  blog_id: 1
+
+second:
+  id: 2
+  title: 2つめの記事です
+  body: 2つめ
+  blog_id: 1
+
+third:
+  id: 3
+  title: 最後の記事です
+  body: さようなら
+  blog_id: 1
+
+other_blog:
+  id: 4
+  title: これは2つめのブログの記事です
+  body: 2つめのブログ
+  blog_id: 2

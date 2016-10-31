@@ -9,9 +9,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    blog = Blog.new blog_params
-    if blog.save
-      redirect_to blog, notice: 'Successfully blog created.'
+    @blog = Blog.new blog_params
+    if @blog.save
+      redirect_to @blog, notice: 'Successfully blog created.'
     else
       redirect_to blogs_path, notice: 'Something went wrong!'
     end
