@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to @blog, notice: 'Successfully blog created.'
     else
-      redirect_to blogs_path, notice: 'Something went wrong!'
+      render :new
     end
   end
 
@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
     if @blog.update_attributes blog_params
       redirect_to @blog, notice: 'Successfully blog updated.'
     else
-      redirect_to @blog, notice: 'Something went wrong!'
+      render :edit
     end
   end
 
