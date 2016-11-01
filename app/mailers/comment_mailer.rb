@@ -1,6 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
 class CommentMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -10,6 +10,8 @@ class CommentMailer < ApplicationMailer
     @blog = comment.entry.blog
     @entry = comment.entry
     @comment = comment
-    mail to: "admin@example.org", from: 'noreply@example.com', subject: '新しいコメントが投稿されました'
+    mail to: ENV['ADMIN_MAIL_ADDRESS'],
+         from: ENV['ADMIN_MAIL_ADDRESS'],
+         subject: '新しいコメントが投稿されました'
   end
 end
